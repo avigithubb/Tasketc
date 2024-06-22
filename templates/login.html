@@ -1,0 +1,22 @@
+{% from 'bootstrap5/form.html' import render_form %}
+{% include "header.html" %}
+
+    <h2 class="main-head">Login Here!</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+          {% for message in messages: %}
+            <p class="flash">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <form action="/login" method="POST">
+        {{ render_form(my_form, novalidate=True) }}
+<!--         <label for="username">Username</label> -->
+<!--         <input type="text" placeholder="Username"> -->
+<!--         <label for="password">Password</label> -->
+<!--         <input type="text" placeholder="Password"> -->
+<!--         <input type="submit" value="Log me in"> -->
+    </form>
+
+
+{% include "footer.html" %}

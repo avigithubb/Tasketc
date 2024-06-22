@@ -1,0 +1,24 @@
+{% from 'bootstrap5/form.html' import render_form %}
+{% include "header.html" %}
+    <div class="add_task">
+
+        <form method="POST" id="new_form">
+            {{ render_form(new_form, novalidate=True) }}
+<!--             <input type="text" value="List_title_here" maxlength="15" size="15" class="create_input"> -->
+<!--             <input type="image" src="{{ url_for('static', filename='images/icons8-edit-64.png') }}" width="5px" height="5px" class="input_img"> -->
+<!--             <textarea rows="10" cols="55" id="radiobuttoncontainer" placeholder="For eg. Buy Bacon.."></textarea> -->
+<!--             <input type="submit" value="Add item" id="submit-button"> -->
+        </form>
+        <div id="item-list">
+            <h2 style="text-align: center; margin-top: -20px;">Item List</h2>
+            <p style="margin-top: 0; margin-bottom: 0;" class="todate">{{ today }}</p>
+            <div id="radio-buttons-container">
+
+            </div>
+            <button type="button" class="create-button" style="margin: auto; width: 100px; height: 50px;">Create</button>
+        </div>
+
+
+    </div>
+
+{% include "footer.html" %}

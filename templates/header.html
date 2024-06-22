@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Todo List</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <h1>✔️ <span class="h1-head">Tasketc</span></h1>
+        {% if current_user.is_authenticated %}
+        <ul>
+            <li>
+                <a href="/home_page">{{ current_user.email }}</a>
+                <a href="/create_new">Create New List</a>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+        {% else %}
+         <ul>
+            <li>
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            </li>
+        </ul>
+        {% endif %}
+    </nav>

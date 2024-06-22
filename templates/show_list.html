@@ -1,0 +1,22 @@
+{% include "header.html" %}
+
+    <div id="item-list">
+        <a href="/home_page"><button class="back-button" title="Go Back"><span class="arrow">⇦</span> Go Back
+        </button></a>
+        {% for items in content_list %}
+        <h2 style="text-align: center; margin-top: -20px;" class="head-title">{{ items.item_title }}</h2>
+        <div id="radio-buttons-container">
+
+                {% for item in items.get_content()["members"] %}
+                    <p class="final_item"> {{ item }} </p>
+                {% endfor %}
+
+        </div>
+        {% endfor %}
+        <div style="display: flex; width: 100%; justify-content: center;">
+            <button style="margin: 0;" type="button" class="edit-button">Edit</button>
+            <button style="margin-left: 5px;" type="button" class="update-button">Update</button>
+        </div>
+    </div>
+
+{% include "footer.html" %}

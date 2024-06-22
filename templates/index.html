@@ -1,0 +1,40 @@
+{% include "header.html" %}
+
+   <div class="main-content">
+        <div class="display" style="display: flex; width: 100%; background-color: azure; flex-wrap: wrap; border-radius: 20px;">
+        {% set has_todo = False %}
+        {% for todo in item_content %}
+            {% if todo.user_id == current_user.id %}
+                {% set has_todo = True %}
+                <a href="/show_list/{{ todo.id }}" class="card-link">
+                <div class="card" data-todo-id="{{ todo.id }}">
+                    <button type="button" class="remove-button" style="width: 10px; display: block; float: right; margin-top: 0px; border: none; background: none; border-radius: 20px; color: red">x</button>
+                    <h3 class="card-title">{{ todo.item_title }}</h3>
+                    <p class="card-content">
+                        {{ todo.get_content()["members"] }}
+                    </p>
+
+                    <p class="card-content">{{ content_json }}</p>
+                    <p class="card-date">{{ todo.date }}</p>
+                </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+        {% if not has_todo %}
+            <a href="#" class="card-link">
+            <div class="card">
+                <button type="button" class="remove-button" style="width: 10px; display: block; float: right; margin-top: 0px; border: none; background: none; border-radius: 20px;">x</button>
+                <h3 class="card-title">Untitled</h3>
+                <p class="card-content">Buy a Bacon..</p>
+                <p class="card-date">Date</p>
+            </div>
+            </a>
+        {% endif %}
+
+
+
+        </div>
+        <a href="/create_new" class="plus-link" style="margin-top: 50px;"><button class="plus-btn" type="button" style="margin: auto;">+</button></a>
+    </div>
+
+{% include "footer.html" %}
